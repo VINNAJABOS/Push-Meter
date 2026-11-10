@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "loadcell": {
+      ".read": "auth != null",
+      ".write": false
+    }
+  }
+}

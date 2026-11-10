@@ -1,0 +1,11 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Data milik aplikasi web (StreakPet, dll) — satu dokumen per user,
+    // hanya boleh dibaca/ditulis oleh pemiliknya sendiri.
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}
